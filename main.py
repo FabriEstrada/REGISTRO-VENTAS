@@ -1,19 +1,21 @@
 def Registro_Ventas(nombre,cantidad,precio):
     with open('ventas.txt','a',encoding='utf-8') as archivo:
         total_pago = cantidad *precio
-        archivo.write(f"{nombre},{cantidad},{precio},{total_pago}\n")
+        archivo.write(f"{nombre},{cantidad},{precio},{total_pago:.2f}\n")
         print(f"Se introdujo el producto: {nombre}\n")
 
 def Mostrar_Ventas():
     try:
         with open('ventas.txt','r',encoding='utf-8') as archivo:
             contenido = archivo.readlines()
-            for linea in contenido:
-                if contenido:
-                    print(f"{linea.strip()}\n")
+            if not contenido:
+                print("No se ha registrado elementos")
+            
+            else:
+                for linea in contenido:
+                    print(f"{linea.strip()}")
                 
-                else:
-                    print("No se ha registrado elementos")
+                print("")
     
     except FileNotFoundError:
         print("El archivo mencionado no se ha encontrado")

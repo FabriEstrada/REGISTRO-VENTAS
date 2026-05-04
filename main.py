@@ -31,3 +31,27 @@ def Ingreso_Datos():
             print("Error al ingresar los datos, vuelve a intentarlo")
     
     return nombre_producto, cantidad_producto, precio_producto
+
+while True:
+    print("----REGISTRO DE VENTAS----")
+    print("1. REGISTRAR VENTAS       ")
+    print("2. MOSTRAR VENTAS         ")
+    print("3. SALIR DEL PROGRAMA     ")
+    
+    opcion_usuario = input("Ingrese una opcion:\t")
+    
+    match opcion_usuario:
+        case "1":
+            nombre,cantidad,precio = Ingreso_Datos()
+            Registro_Ventas(nombre,cantidad,precio)
+        
+        case "2":
+            Mostrar_Ventas()
+        
+        case "3":
+            print("Finalizando el programa")
+            break
+        
+        case _:
+            print("Opcion invalida, vuelve a intentarlo\n")
+    
